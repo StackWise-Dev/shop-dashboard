@@ -1,0 +1,31 @@
+{
+  "name": "shop-dashboard",
+  "version": "1.0.0",
+  "main": "web/index.js",
+  "license": "UNLICENSED",
+  "scripts": {
+    "shopify": "shopify",
+    "build": "shopify app build",
+    "dev": "shopify app dev",
+    "info": "shopify app info",
+    "generate": "shopify app generate",
+    "deploy": "shopify app deploy"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.19",
+    "@mui/material": "^5.14.19",
+    "@shopify/app": "3.51.2",
+    "@shopify/cli": "3.51.2",
+    "chart.js": "^4.4.0",
+    "react-chartjs-2": "^5.2.0"
+  },
+  "author": "StackWiseDev",
+  "private": true,
+  "workspaces": [
+    "extensions/*",
+    "web",
+    "web/frontend"
+  ]
+}
