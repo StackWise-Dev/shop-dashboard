@@ -1,7 +1,7 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
 name = "shop-dashboard"
-client_id = "7fdba14ee8d9e59ff53fee0634b17522"
+client_id = ""
 application_url = "https://compensation-land-barbados-kissing.trycloudflare.com"
 embedded = true
 
