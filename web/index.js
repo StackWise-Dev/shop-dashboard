@@ -39,12 +39,38 @@ app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
-app.get("/api/products/count", async (_req, res) => {
-  const countData = await shopify.api.rest.Product.count({
+// GETTING STORE INFORMATION
+app.get("/api/store/info", async(req, res) => {
+  let storeInfo = await shopify.api.rest.Shop.all({
     session: res.locals.shopify.session,
   });
-  res.status(200).send(countData);
+  res.status(200).send(storeInfo);
 });
+
+// GETTING STORE ORDERS
+app.get("/api/orders/all", async(req, res) => {
+  let storeOrders = await shopify.api.rest.Order.all({
+    session: res.locals.shopify.session,
+    status: "any",
+  });
+  res.status(200).send(storeOrders);
+});
+
+// READ ALL PRODUCTS
+app.get("/api/product/count", async(req, res) => {
+  let totalProducts = await shopify.api.rest.Product.count({
+    session: res.locals.shopify.session,
+  });
+  res.status(200).send(totalProducts);
+});
+
+// READ ALL COLLECTIONS
+app.get("/api/collection/count", async(req, res) => {
+  let totalCollections = await shopify.api.rest.CustomCollection.all({
+    session: res.locals.shopify.session,
+  });
+  res.status(200).send(totalCollections);
+})
 
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;

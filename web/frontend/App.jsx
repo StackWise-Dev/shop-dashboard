@@ -9,13 +9,22 @@ import {
   PolarisProvider,
   NavigationBar,
   TopBar,
+  Skeleton
 } from "./components";
+import { useEffect, useState } from "react";
 
 export default function App() {
   // Any .tsx or .jsx files in /pages will become a route
   // See documentation for <Routes /> for more info
   const pages = import.meta.globEager("./pages/**/!(*.test.[jt]sx)*.([jt]sx)");
   const { t } = useTranslation();
+  const [showLayout, setShowLayout] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLayout(true);
+    }, 3000)
+  }, [showLayout]);
 
   return (
     <PolarisProvider>
@@ -23,17 +32,20 @@ export default function App() {
         <AppBridgeProvider>
           <QueryProvider>
             <NavigationMenu
-              navigationLinks={[]}
+              navigationLinks={[
+              ]}
             />
-            <div className="main-section">
-              <div className="menu-section">
-                <NavigationBar />
-              </div>
-              <div className="content-section">
-                <TopBar />
-                <Routes pages={pages} />
-              </div>
-            </div>
+            { showLayout ? 
+              <div className="main-section">
+                <div className="menu-section">
+                  <NavigationBar />
+                </div>
+                <div className="content-section">
+                  <TopBar />
+                  <Routes pages={pages} />
+                </div>
+              </div> : <Skeleton />
+            }
           </QueryProvider>
         </AppBridgeProvider>
       </BrowserRouter>

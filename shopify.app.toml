@@ -2,19 +2,19 @@
 
 name = "shop-dashboard"
 client_id = "7fdba14ee8d9e59ff53fee0634b17522"
-application_url = "https://compensation-land-barbados-kissing.trycloudflare.com"
+application_url = "https://scheme-situations-paths-restaurants.trycloudflare.com"
 embedded = true
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products"
+scopes = "write_products,read_products,read_orders"
 
 [auth]
 redirect_urls = [
-  "https://compensation-land-barbados-kissing.trycloudflare.com/auth/callback",
-  "https://compensation-land-barbados-kissing.trycloudflare.com/auth/shopify/callback",
-  "https://compensation-land-barbados-kissing.trycloudflare.com/api/auth/callback",
-  "https://compensation-land-barbados-kissing.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://scheme-situations-paths-restaurants.trycloudflare.com/auth/callback",
+  "https://scheme-situations-paths-restaurants.trycloudflare.com/auth/shopify/callback",
+  "https://scheme-situations-paths-restaurants.trycloudflare.com/api/auth/callback",
+  "https://scheme-situations-paths-restaurants.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]
