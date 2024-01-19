@@ -29,3 +29,4 @@ web/database.sqlite
 
 #shopify
 shopify.app.toml
+*.toml

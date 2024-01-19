@@ -1,0 +1,38 @@
+<div class="app-form">
+    <h1 style="text-align: {{ block.settings.alignment }};">{{ block.settings.form_title }}</h1>
+    <form type="app-form">
+        <div class="username">
+            <label for="username">Your Name</label>
+            <input type="text" name="username" id="username" autocomplete="off">
+        </div>
+        <div class="email">
+            <label for="email">E-Mail</label>
+            <input type="email" name="email" id="email" autocomplete="off"/>
+        </div>
+        <input type="submit" class="submit" value="Register Yourself"/>
+    </form>
+</div>
+
+
+{% schema %}
+    {
+        "name": "App Registration Form",
+        "target": "section",
+        "class": "app-dashboard-form",
+        "stylesheet": "app-form.css",
+        "javascript": "app-form.js",
+        "settings": [
+            {
+                "type": "text",
+                "id": "form_title",
+                "label": "App Form Title"
+            }, 
+            {
+                "type": "text_alignment",
+                "id": "alignment",
+                "label": "Text alignment",
+                "default": "center"
+            }
+        ]
+    }
+{% endschema %}

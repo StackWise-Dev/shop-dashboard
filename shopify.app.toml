@@ -2,7 +2,7 @@
 
 name = "shop-dashboard"
 client_id = "7fdba14ee8d9e59ff53fee0634b17522"
-application_url = "https://scheme-situations-paths-restaurants.trycloudflare.com"
+application_url = "https://fraser-dat-relief-sociology.trycloudflare.com"
 embedded = true
 
 [access_scopes]
@@ -11,10 +11,10 @@ scopes = "write_products,read_products,read_orders"
 
 [auth]
 redirect_urls = [
-  "https://scheme-situations-paths-restaurants.trycloudflare.com/auth/callback",
-  "https://scheme-situations-paths-restaurants.trycloudflare.com/auth/shopify/callback",
-  "https://scheme-situations-paths-restaurants.trycloudflare.com/api/auth/callback",
-  "https://scheme-situations-paths-restaurants.trycloudflare.com/.shopify/graphiql/auth/callback"
+  "https://fraser-dat-relief-sociology.trycloudflare.com/auth/callback",
+  "https://fraser-dat-relief-sociology.trycloudflare.com/auth/shopify/callback",
+  "https://fraser-dat-relief-sociology.trycloudflare.com/api/auth/callback",
+  "https://fraser-dat-relief-sociology.trycloudflare.com/.shopify/graphiql/auth/callback"
 ]
 
 [webhooks]

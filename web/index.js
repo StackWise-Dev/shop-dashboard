@@ -7,6 +7,7 @@ import serveStatic from "serve-static";
 import shopify from "./shopify.js";
 import productCreator from "./product-creator.js";
 import PrivacyWebhookHandlers from "./privacy.js";
+import mongoose from "mongoose";
 
 const PORT = parseInt(
   process.env.BACKEND_PORT || process.env.PORT || "3000",
@@ -36,8 +37,73 @@ app.post(
 // also add a proxy rule for them in web/frontend/vite.config.js
 
 app.use("/api/*", shopify.validateAuthenticatedSession());
-
+app.use("/userdata/*", authenticateUser);
 app.use(express.json());
+
+// 1. connection to mongoose
+// 2. create schema 
+// 3. models
+// 4. crud operations
+
+mongoose.connect("mongodb://127.0.0.1:27017/shopdashboard")
+  .then(() => {
+    console.log("--- Connected to Mongoose Successfully ---");
+  })
+  .catch((error) => {
+    console.log("--- Mongoose Can't Connect ---");
+  })
+
+let userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  useremail: {
+    type: String,
+    required: true,
+    unique: true,
+  }
+});
+
+let User = mongoose.model("userdata", userSchema);
+
+async function authenticateUser(req, res, next) {
+  let shop = req.query.shop;
+  let storeName = await shopify.config.sessionStorage.findSessionsByShop(shop);
+  if(shop === storeName[0].shop) {
+    next();
+  } else {
+    res.send("User Not Authorized");
+  }
+}
+
+// GETTING STOREFRONT DATA
+app.post("/userdata/userinfo", async(req, res) => {
+  let userData = req.body;
+  try {
+    let createUser = await User.create({
+      username: userData[0],
+      useremail: userData[1],
+    });
+    console.log("--- User Created Successfully ---");
+    res.status(200).json("--- User Created Successfully ---");
+  } catch(error) {
+    if(error.code === 11000) {
+      return res.json("--- User Already Exists ---");
+    } else {
+      console.log(error.message);
+    }
+  }
+})
+
+app.get("/api/getusers", async(req, res) => {
+  try {
+    let users = await User.find({});
+    res.status(200).send(users);
+  }catch(error) {
+    console.log(error)
+  }
+});
 
 // GETTING STORE INFORMATION
 app.get("/api/store/info", async(req, res) => {

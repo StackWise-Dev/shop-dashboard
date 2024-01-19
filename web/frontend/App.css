@@ -148,3 +148,31 @@ a.active {
     font-weight: bold;
 }
 
+/* USERS DATA SECTION */
+.users-data ul {
+    list-style-type: none;
+}
+.users-data ul li {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+.users-data ul li:nth-child(1) {
+    background-color: var(--color_button);
+    color: var(--color_white);
+    font-weight: 600;
+    text-align: center;
+}
+.users-data ul li span:nth-child(1) {
+    flex: .3;
+    height: 100%;
+    padding: 10px 0px;
+}
+.users-data ul li:not(:nth-child(1)) span:nth-child(1) {
+    border-right: 1px solid var(--bg_secondary);
+}
+.users-data ul li span:nth-child(2) {
+    flex: 1;
+    height: 100%;
+    padding: 10px 0px;
+}
