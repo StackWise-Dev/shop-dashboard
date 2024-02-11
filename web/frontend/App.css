@@ -176,3 +176,93 @@ a.active {
     height: 100%;
     padding: 10px 0px;
 }
+
+/* PRODUCT PAGE STYLE START */
+.product-image {
+    width: 100%;
+    height: auto;
+}
+.Polaris-Grid-Cell {
+    cursor: pointer;
+    transition: all 0.1s;
+}
+.Polaris-Grid-Cell:hover {
+    transform: scale(1.02);
+}
+
+
+.product-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.product-modal .btn-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    padding: 12px 20px;
+    border-radius: 2px;
+    cursor: pointer;
+    background-color: #fff;
+}
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.modal-form form {
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    border-radius: 30px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto;
+}
+.modal-form form .image-block {
+    flex: 1;
+}
+.modal-form form .image-block img {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
+}
+.modal-form form .form-fields {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-direction: column;
+}
+.modal-form form .form-fields input,
+.modal-form form .form-fields textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #7d7d7d;
+}
+.modal-form form .form-fields input[type='submit'] {
+    cursor: pointer;
+}
+.button {
+    padding: 15px 25px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    background-color: #008170;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    display: inline-flex;
+    gap: 10px;
+}
+/* PRODUCT PAGE STYLE END */

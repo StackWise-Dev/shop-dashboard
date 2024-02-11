@@ -10,7 +10,6 @@ export default function HomePage() {
   let {responseData, isLoading, error} = useApiRequest("/api/orders/all", "GET");
   let productResult = useApiRequest("/api/product/count", "GET");
   let collectionResult = useApiRequest("/api/collection/count", "GET");
-  console.log(collectionResult);
   if(error) {
     console.log(error);
   }

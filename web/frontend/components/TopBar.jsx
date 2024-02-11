@@ -5,7 +5,6 @@ import useApiRequest from '../hooks/useApiRequest';
 export function TopBar() {
 
   let {responseData, isLoading, error} = useApiRequest("/api/store/info", "GET");
-  console.log(responseData);
   if(error) {
     console.log(error);
   }

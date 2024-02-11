@@ -138,6 +138,66 @@ app.get("/api/collection/count", async(req, res) => {
   res.status(200).send(totalCollections);
 })
 
+// READ ALL PRODUCTS
+app.get("/api/products/all", async(req, res) => {
+  let allProducts = await shopify.api.rest.Product.all({
+    session: res.locals.shopify.session,
+  });
+  res.status(200).send(allProducts);
+});
+
+// UPDATE A PRODUCT
+app.put("/api/product/update", async(req, res) => {
+  let getProduct = req.body;
+  let updateProduct = new shopify.api.rest.Product({
+    session: res.locals.shopify.session,
+  });
+  updateProduct.id = getProduct.id;
+  updateProduct.title = getProduct.title;
+  await updateProduct.save({
+    update: true,
+  });
+  res.status(200).send({Message: "Product Updated Successfully"})
+});
+
+// CREATE A NEW PRODUCT
+app.post("/api/product/create", async(req, res) => {
+  let newProduct = new shopify.api.rest.Product({
+    session: res.locals.shopify.session,
+  });
+  newProduct.title = "Men New Style Shoe";
+  newProduct.body_html = "Men new style show latest design";
+  newProduct.varndor = "al-janat-demo";
+  newProduct.images = [{
+    src: "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+  }];
+  await newProduct.save({
+    update: true,
+  });
+  res.status(200).send({Message: "Product created Successfully"});
+});
+
+// DELETE A PRODUCT
+app.delete("/api/product/delete", async(req, res) => {
+  await shopify.api.rest.Product.delete({
+    session: res.locals.shopify.session,
+    id: 7281843077180,
+  });
+  res.status(200).send({Message: "Product Deleted Successfully"})
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.get("/api/products/create", async (_req, res) => {
   let status = 200;
   let error = null;
